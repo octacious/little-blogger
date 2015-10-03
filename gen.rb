@@ -22,7 +22,7 @@ end
 Dir.mkdir('gen')
 
 posts.map do |post|
-  File.write(File.join('gen', post[:name]), post[:html])
+  File.write(File.join('gen', post[:name] + '.html'), post[:html])
 
   # Some nice output...
   puts "=> #{post[:name]} (#{post[:word_count]} words)"
