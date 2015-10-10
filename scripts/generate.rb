@@ -14,13 +14,6 @@ posts = Dir.glob('posts/**/*.txt').map do |path|
   {:html => html, :name => File.basename(path, '.txt'), :word_count => text.split(/\s+/).size}
 end
 
-if Dir.exist?('gen')
-  require 'fileutils'
-  FileUtils.rm_r('gen')
-end
-
-Dir.mkdir('gen')
-
 posts.map do |post|
   File.write(File.join('gen', post[:name] + '.html'), post[:html])
 
