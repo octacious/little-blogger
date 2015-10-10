@@ -1,5 +1,5 @@
 directory 'gen'
 
 task :default => 'gen' do
-	puts `ruby gen.rb`
+	puts `ruby scripts/generate.rb`
 end
