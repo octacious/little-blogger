@@ -1,18 +1,18 @@
+require './scripts/generate'
 directory 'gen'
 
-task :default => 'gen' do
-	require './scripts/generate'
+POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
+	output_path = path.sub(/\Aposts/, 'gen').sub(/\.txt\Z/, '.html')
 
-	Dir.glob('posts/**/*.txt') do |post_path|
-		# Remove the first part of the path, so that
-		# the posts/ hierarchy will essentially be 'copied' over
-		# to gen/.
-		dirname, basename = File.split(post_path)
-		dirname['posts'] = ''
+	file output_path => path do
+		IO.write(output_path,
+			Blogger.generate_html(IO.read(path)))
 
-		html_path = File.join('gen/', dirname, basename.sub(/\.txt\Z/, '.html'))
-		html = Blogger.generate_html(IO.read(post_path))
-
-		IO.write(html_path, html)
+		puts "=> #{path}"
 	end
+
+	output_path
 end
+
+task :default => 'gen'
+task :default => POSTS
