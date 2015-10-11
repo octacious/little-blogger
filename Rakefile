@@ -1,5 +1,10 @@
 require './scripts/generate'
+
 directory 'site'
+directory 'css'
+directory 'site/css' => ['site', 'css'] do
+	cp_r 'css', 'site/css'
+end
 
 POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
 	output_path = path.sub(/\Aposts/, 'site').sub(/\.txt\Z/, '.html')
@@ -20,5 +25,6 @@ file 'site/index.html' => 'site' do
 end
 
 task :default => 'site'
+task :default => 'site/css'
 task :default => POSTS
 task :default => 'site/index.html'
