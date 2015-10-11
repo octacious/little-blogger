@@ -6,7 +6,7 @@ module Blogger
     "<#{name}>#{contents.join}</#{name}>"
   end
 
-  def self.generate_html(post_text)
+  def self.generate_post(post_text)
     "<!DOCTYPE html>\n" + tag('html',
       tag('head',
         tag('title', 'A post'),

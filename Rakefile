@@ -12,7 +12,7 @@ POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
 
 	file output_path => path do
 		IO.write(output_path,
-			Blogger.generate_html(IO.read(path)))
+			Blogger.generate_post(IO.read(path)))
 
 		puts "=> #{path}"
 	end
