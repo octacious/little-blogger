@@ -14,5 +14,11 @@ POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
 	output_path
 end
 
+file 'site/index.html' => 'site' do
+	IO.write('site/index.html',
+		Blogger.generate_index(POSTS))
+end
+
 task :default => 'site'
 task :default => POSTS
+task :default => 'site/index.html'
