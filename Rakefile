@@ -1,8 +1,8 @@
 require './scripts/generate'
-directory 'gen'
+directory 'site'
 
 POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
-	output_path = path.sub(/\Aposts/, 'gen').sub(/\.txt\Z/, '.html')
+	output_path = path.sub(/\Aposts/, 'site').sub(/\.txt\Z/, '.html')
 
 	file output_path => path do
 		IO.write(output_path,
@@ -14,5 +14,5 @@ POSTS = Dir.glob('posts/**/*.txt').to_a.map do |path|
 	output_path
 end
 
-task :default => 'gen'
+task :default => 'site'
 task :default => POSTS
