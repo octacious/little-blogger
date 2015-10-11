@@ -9,7 +9,10 @@ module Blogger
   def self.generate_html(post_text)
     tag('html',
       tag('head', tag('title', 'A post')),
-      tag('body', tag('p', post_text)))
+      tag('body',
+        tag('p', %Q|<a href="/">Go back</a>|),
+        tag('p', '---'),
+        tag('p', post_text)))
   end
 
   def self.generate_index(post_urls)
