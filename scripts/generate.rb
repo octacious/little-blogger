@@ -7,8 +7,8 @@ module Blogger
   end
 
   def self.generate_html(post_text)
-    tag('html',
       tag('head', tag('title', 'A post')),
+    "<!DOCTYPE html>\n" + tag('html',
       tag('body',
         tag('p', %Q|<a href="/">Go back</a>|),
         tag('p', '---'),
@@ -23,7 +23,7 @@ module Blogger
       tag('p', %Q|<a href="#{u}">#{u}</a>|)
     end
 
-  	tag('html',
+  	"<!DOCTYPE html>\n" + tag('html',
   		tag('head', tag('title', 'List of Posts')),
   		tag('body', urls.join))
   end
