@@ -2,6 +2,7 @@ require './scripts/generate'
 
 directory 'site'
 directory 'css'
+
 directory 'site/css' => ['site', 'css'] do
 	cp_r 'css', 'site/css'
 end
@@ -24,7 +25,4 @@ file 'site/index.html' => 'site' do
 		Blogger.generate_index(POSTS))
 end
 
-task :default => 'site'
-task :default => 'site/css'
-task :default => POSTS
-task :default => 'site/index.html'
+task :default => ['site/css', 'site/index.html', *POSTS]
