@@ -6,11 +6,16 @@ module Blogger
     "<#{name}>#{contents.join}</#{name}>"
   end
 
+  def self.ctag(name, flags={})
+    pairs = flags.map { |k, v| "#{k}=#{v}" }
+    "<#{name} #{pairs.join ' '} />"
+  end
+
   def self.generate_post(post_text)
     "<!DOCTYPE html>\n" + tag('html',
       tag('head',
         tag('title', 'A post'),
-        %Q|<link rel="stylesheet" type="text/css" href="/css/post.css" />|),
+        ctag('link', rel: 'stylesheet', type: 'text/css', href: '/css/post.css'),
       tag('body',
         tag('p', %Q|<a href="/">Go back</a>|),
         tag('p', '---'),
@@ -28,7 +33,7 @@ module Blogger
   	"<!DOCTYPE html>\n" + tag('html',
   		tag('head',
         tag('title', 'List of Posts'),
-        %Q|<link rel="stylesheet" type="text/css" href="/css/index.css" />|),
+        ctag('link', rel: 'stylesheet', type: 'text/css', href: '/css/index.css'),
   		tag('body', urls.join))
   end
 
