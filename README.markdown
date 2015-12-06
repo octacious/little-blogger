@@ -14,5 +14,7 @@ Usage:
 
 Go ahead and host the website under a HTML server of your liking, or use Barking Iguana's web-server one-liner!
 
-`# cd /path/to/project/root`
-`# ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start'`
+```
+# cd /path/to/project/root
+# ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start'
+```
