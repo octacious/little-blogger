@@ -13,8 +13,9 @@ Usage:
 3. The generated HTML will be saved under a folder named 'site', which will be created if it doesn't already exist.
 
 Go ahead and host the website under a HTML server of your liking, or host a tiny server (courtesy of [Barking Iguana](http://barkingiguana.com/2010/04/11/a-one-line-web-server-in-ruby/))!
-
-	$ # Clone the repo to ./little-blogger
+	
+	$ gem install rake
+	$ git clone https://github.com/trigonom/little-blogger.git
 	$ cd little-blogger
 	$ rake
 	$ ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => File.join(Dir.pwd, 'site')).start'
