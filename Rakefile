@@ -1,5 +1,9 @@
 require './scripts/generate'
 
+# Change this according to need.
+SERVER_IP = "192.168.0.13"
+SERVER_PORT = 80
+
 directory 'site'
 directory 'css'
 
@@ -25,4 +29,13 @@ file 'site/index.html' => 'site' do
 		Blogger.generate_index(POSTS))
 end
 
-task :default => ['site/css', 'site/index.html', *POSTS]
+task :build => ['site/css', 'site/index.html', *POSTS]
+
+task :host => :default do
+  require 'webrick'
+  puts "Hosting at #{SERVER_IP}:#{SERVER_PORT}."
+  puts "You can change this in the Rakefile."
+  WEBrick::HTTPServer.new(:BindAddress => SERVER_IP, :Port => SERVER_PORT, :DocumentRoot => File.join(Dir.pwd, 'site')).start
+end
+
+task :default => :build

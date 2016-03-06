@@ -8,14 +8,11 @@ Post filetypes supported: .txt
 
 Usage:
 
-1. Save your posts as files in a folder named `posts` in the same directory as the script. You can organize them in any way you'd like, and even use subdirectories!
-2. Generate your website using Ruby with the `rake` gem: `rake`.
-3. The generated HTML will be saved under a folder named 'site', which will be created if it doesn't already exist.
+Save your posts as text files in a folder named `posts` in the same directory as the script. You can organize them in any way you'd like, and even use subdirectories!
 
-Go ahead and host the website under a HTML server of your liking, or host a tiny server (courtesy of [Barking Iguana](http://barkingiguana.com/2010/04/11/a-one-line-web-server-in-ruby/))!
-	
 	$ gem install rake
 	$ git clone https://github.com/trigonom/little-blogger.git
 	$ cd little-blogger
-	$ rake
-	$ ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => File.join(Dir.pwd, 'site')).start'
+	$ rake host
+
+The generated HTML will be saved under a folder named 'site', which will be created if it doesn't already exist.
