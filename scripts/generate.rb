@@ -7,7 +7,7 @@ module Blogger
   end
 
   def self.ctag(name, flags={})
-    pairs = flags.map { |k, v| "#{k}=#{v}" }
+    pairs = flags.map { |k, v| "#{k}=\"#{v}\"" }
     "<#{name} #{pairs.join ' '} />"
   end
 
@@ -19,7 +19,7 @@ module Blogger
       tag('body',
         tag('p', %Q|<a href="/">Go back</a>|),
         tag('p', '---'),
-        tag('p', post_text)))
+        tag('p', post_text))))
   end
 
   def self.generate_index(post_urls)
@@ -34,7 +34,7 @@ module Blogger
   		tag('head',
         tag('title', 'List of Posts'),
         ctag('link', rel: 'stylesheet', type: 'text/css', href: '/css/index.css'),
-  		tag('body', urls.join))
+  		tag('body', urls.join)))
   end
 
 end
