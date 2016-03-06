@@ -4,9 +4,7 @@ This is a minimal Ruby script for generating HTML pages out of your
 blog posts. Instead of writing lots of HTML by hand, you can run this
 script to generate the code for your website, quickly and efficiently!
 
-Post filetypes supported: .txt
-
-Usage:
+## Usage:
 
 Save your posts as text files in a folder named `posts` in the same directory as the script. You can organize them in any way you'd like, and even use subdirectories!
 
