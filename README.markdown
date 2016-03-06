@@ -6,7 +6,7 @@ script to generate the code for your website, quickly and efficiently!
 
 ### Usage:
 
-Save your posts as text files in a folder named `posts` in the same directory as the script. You can organize them in any way you'd like, and even use subdirectories!
+Save your posts as text files in a folder named `posts` in the same directory as the Rakefile. You can organize them in any way you'd like, and even use subdirectories!
 
 	$ gem install rake
 	$ git clone https://github.com/trigonom/little-blogger.git
