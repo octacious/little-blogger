@@ -1,7 +1,7 @@
 require './scripts/generate'
 
 # Change this according to need.
-SERVER_IP = "192.168.0.13"
+SERVER_IP = "localhost"
 SERVER_PORT = 80
 
 directory 'site'
