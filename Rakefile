@@ -33,9 +33,15 @@ task :build => ['site/css', 'site/index.html', *POSTS]
 
 task :host => :default do
   require 'webrick'
+  server = WEBrick::HTTPServer.new(:BindAddress => SERVER_IP, :Port => SERVER_PORT, :DocumentRoot => File.join(Dir.pwd, 'site'))
+  trap(:INT) do
+    server.shutdown
+    puts "Goodbye!"
+  end
   puts "Hosting at #{SERVER_IP}:#{SERVER_PORT}."
-  puts "You can change this in the Rakefile."
-  WEBrick::HTTPServer.new(:BindAddress => SERVER_IP, :Port => SERVER_PORT, :DocumentRoot => File.join(Dir.pwd, 'site')).start
+  puts "You may change this in the Rakefile."
+  puts "Stop the server with Ctrl-C."
+  server.start
 end
 
 task :default => :build
